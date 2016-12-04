@@ -30,11 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }*/
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        UIAlertView(title: "did finish please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         FIRApp.configure()
         return true
     }
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        UIAlertView(title: "please will finish", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         return true
     }
     //LOOK HERE

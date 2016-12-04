@@ -14,7 +14,7 @@
 + (instancetype)sharedObject;
 
 #pragma mark Instance Functions
-- (NSString *)authorizeFitbitAPI;
+- (BOOL)authorizeFitbitAPI;
 - (void)getRequestToken:(id)sender;
 
 @end
