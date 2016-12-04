@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import Firebase
+import OAuthSwift
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    
+/*    func application(_ application: UIApplication, open url: URL, sourceApplication: String?) -> Bool {
+        
         // Override point for customization after application launch.
+        /*if (url.host == "oauth-callback") {
+            OAuthSwift.handle(url: url)
+            print("yes called")
+            
+        }*/
+        
+        return true
+    }*/
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        FIRApp.configure()
+        return true
+    }
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        return true
+    }
+    //LOOK HERE
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        UIAlertView(title: "please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        FitbitAPI.sharedObject().getRequestToken(nil)
         return true
     }
 
@@ -43,4 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+/*extension AppDelegate {
+ 
+ func applicationHandle(url: URL) {
+ if (url.host == "oauth-callback") {
+ OAuthSwift.handle(url: url)
+ } else {
+ // Google provider is the only one wuth your.bundle.id url schema.
+ OAuthSwift.handle(url: url)
+ }
+ }
+ }*/
 
