@@ -15,15 +15,8 @@ class FirstViewController: OAuthViewController {
     
     var currentParameters = [String: String]()
     
-    let formData = Semaphore<FormViewControllerData>()
+//    let formData = Semaphore<FormViewControllerData>()
     
-   /* lazy var internalWebViewController: WebViewController = {
-        let controller = WebViewController()
-        controller.view = UIView(frame: UIScreen.main.bounds) // needed if no nib or not loaded from storyboard
-        controller.delegate = self
-        controller.viewDidLoad() // allow WebViewController to use this ViewController as parent to be presented
-        return controller
-    }()*/
     
 }
 
@@ -36,11 +29,11 @@ extension FirstViewController {
             "consumerKey" : "227Y9G",
             "consumerSecret" : "28e83c4530d40238ef36fad77bdf6f40"
         ]
-        doOAuthFitbit2(currentParameters)
+       // doOAuthFitbit2(currentParameters)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func doOAuthFitbit2(_ serviceParameters: [String:String]) {
+    /*func doOAuthFitbit2(_ serviceParameters: [String:String]) {
         print("In Auth fitbit2")
         let oauthswift = OAuth2Swift(
             consumerKey:    serviceParameters["consumerKey"]!,
@@ -146,6 +139,6 @@ class Semaphore<T> {
     
     func cancel() {
         segueSemaphore.signal()
-    }
+    }*/
 }
 
