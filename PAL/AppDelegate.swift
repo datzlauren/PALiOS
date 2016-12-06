@@ -28,12 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }*/
-    func application(_ app: UIApplication, open url: URL, sourceApplication: String?) -> Bool {
+    /*func application(_ app: UIApplication, open url: URL, sourceApplication: String?) -> Bool {
         
-        UIAlertView(title: "please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
-        FitbitAPI.sharedObject().getRequestToken(nil)
+        UIAlertView(title: "souplease", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //FitbitAPI.sharedObject().getRequestToken(nil)
         return true
-    }
+    }*/
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         UIAlertView(title: "did finish please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
@@ -48,7 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //LOOK HERE
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        UIAlertView(title: "please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //THIS is what's being called when we return from the internet redirect.
+        UIAlertView(title: "please??", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        
+        //If this line is in, it crashes. Otherwise, it transitions just fine back to the app.
         FitbitAPI.sharedObject().getRequestToken(nil)
         return true
     }
@@ -56,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
         
     }
 
@@ -71,12 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        UIAlertView(title: "did become active", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //UIAlertView(title: "did become active", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        UIAlertView(title: "please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //UIAlertView(title: "please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
     }
 
 
