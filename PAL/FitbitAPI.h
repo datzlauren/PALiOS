@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFOAuth2Manager.h"
 
 @interface FitbitAPI : NSObject
 
@@ -16,5 +17,8 @@
 #pragma mark Instance Functions
 - (BOOL)authorizeFitbitAPI;
 - (void)getRequestToken:(id)sender;
+- (BOOL)testFun;
+- (AFOAuthCredential *)getCredential:(NSString*)token: forTokenType:(NSString *)token_type forExpiration:(NSString*)expiration;
+
 
 @end

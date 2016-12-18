@@ -48,11 +48,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //LOOK HERE
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
+        let authurl = "\(url)";
+        let authArr = authurl.components(separatedBy: "://");
+        let authCode = authArr[1];
+        let authCodeArr = authCode.components(separatedBy: "&");
+        let accessToken = authCodeArr[0].components(separatedBy: "#acces-token=");
+        print (accessToken);
+        //AFOAuthCredential
+        //TODO: do this then call the profile function and see whats up
+        //let credential = FitbitAPI.sharedObject().getCredential(accessToken,
+        
+        UserDefaults.standard.setValue(accessToken[0], forKey:"auth-token");
         //THIS is what's being called when we return from the internet redirect.
         UIAlertView(title: "please??", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         
+        
         //If this line is in, it crashes. Otherwise, it transitions just fine back to the app.
-        FitbitAPI.sharedObject().getRequestToken(nil)
+        //FitbitAPI.sharedObject().getRequestToken(nil)
+        
+        //CONVERT options[0] and options[1] keys to regular strings
+        //print(options[UIApplicationOpenURLOptionsKey.annotation] as! String!)
+        //PRINT THEM TO SEE IF ANY IF AN AUTH CODE
+        //FIND THE AUTH CODE
+        //options[0].getKey
+        //then put the auth-code in user defaults and see what else the fitbit function wants
+        
+        
+        //FitbitAPI.sharedObject().testFun()
         return true
     }
 
