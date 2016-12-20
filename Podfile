@@ -9,6 +9,7 @@ target 'PAL' do
   pod 'AFNetworking', '~> 3.0'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   # Pods for PAL
   target 'PALTests' do
     inherit! :search_paths

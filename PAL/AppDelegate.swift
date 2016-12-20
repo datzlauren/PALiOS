@@ -15,6 +15,8 @@ import OAuthSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var ref: FIRDatabaseReference!
+    
     
     
 /*    func application(_ application: UIApplication, open url: URL, sourceApplication: String?) -> Bool {
@@ -36,13 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }*/
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        UIAlertView(title: "did finish please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //UIAlertView(title: "did finish please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         FIRApp.configure()
+        self.ref = FIRDatabase.database().reference()
         return true
     }
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        UIAlertView(title: "please will finish", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //UIAlertView(title: "please will finish", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         return true
     }
     //LOOK HERE
@@ -52,15 +55,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let authArr = authurl.components(separatedBy: "://");
         let authCode = authArr[1];
         let authCodeArr = authCode.components(separatedBy: "&");
-        let accessToken = authCodeArr[0].components(separatedBy: "#acces-token=");
+        let accessToken = authCodeArr[0].components(separatedBy: "#access_token=");
+        //authcodearr 3 is token type=...
+        let tokenType = authCodeArr[3].components(separatedBy: "=")[1];
+        //authcodearr 4 is expires_in=...
+        let expiration = authCodeArr[4].components(separatedBy: "=")[1];
+        print (authCode);
         print (accessToken);
+        
         //AFOAuthCredential
         //TODO: do this then call the profile function and see whats up
-        //let credential = FitbitAPI.sharedObject().getCredential(accessToken,
-        
+        let credential = FitbitAPI.sharedObject().getCredential(accessToken[1], forTokenType: tokenType, forExpiration: expiration);
+        print (credential?.accessToken as Any);
         UserDefaults.standard.setValue(accessToken[0], forKey:"auth-token");
         //THIS is what's being called when we return from the internet redirect.
-        UIAlertView(title: "please??", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
+        //UIAlertView(title: "please??", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         
         
         //If this line is in, it crashes. Otherwise, it transitions just fine back to the app.
@@ -75,6 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //FitbitAPI.sharedObject().testFun()
+        print ("hih");
+        //UserDefaults.standard.setValue(credential, forKey:"credential");
+        //get and store sleep data
+        //store 
+        let sleepData = FitbitAPI.sharedObject().getFitbitSleepData(credential);
+        
+        print (sleepData);
+
         return true
     }
 

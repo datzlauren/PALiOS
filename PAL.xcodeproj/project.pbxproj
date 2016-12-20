@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C2D314FFEAA196326B336CC /* Pods_PALTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E3A4C2DE958E273CB59597 /* Pods_PALTests.framework */; };
 		5511CEEC6001C992129B7DE1 /* Pods_PAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8F87A53D888A3B3986B2C5 /* Pods_PAL.framework */; };
+		5B39F5201E078274001CAE34 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F51F1E078274001CAE34 /* QuizViewController.swift */; };
 		5B443C6A1DD2359F00690E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443C691DD2359F00690E41 /* AppDelegate.swift */; };
 		5B443C6C1DD2359F00690E41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443C6B1DD2359F00690E41 /* FirstViewController.swift */; };
 		5B443C6E1DD2359F00690E41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443C6D1DD2359F00690E41 /* SecondViewController.swift */; };
@@ -128,6 +129,7 @@
 		01076409BF8E1C417FFC8D0C /* Pods-PAL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAL.release.xcconfig"; path = "Pods/Target Support Files/Pods-PAL/Pods-PAL.release.xcconfig"; sourceTree = "<group>"; };
 		3F6AB52605050E6465F52F28 /* Pods-PALUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PALUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PALUITests/Pods-PALUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5984F3BE9B008A58564772F1 /* Pods_PALUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PALUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B39F51F1E078274001CAE34 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		5B443C661DD2359F00690E41 /* PAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B443C691DD2359F00690E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B443C6B1DD2359F00690E41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		5B443C681DD2359F00690E41 /* PAL */ = {
 			isa = PBXGroup;
 			children = (
+				5B39F51F1E078274001CAE34 /* QuizViewController.swift */,
 				5B443C991DD237B900690E41 /* GoogleService-Info.plist */,
 				5B443C691DD2359F00690E41 /* AppDelegate.swift */,
 				5B443C6B1DD2359F00690E41 /* FirstViewController.swift */,
@@ -655,6 +658,7 @@
 				5B6487DF1DF4B47200E4156E /* AFOAuth2Manager.m in Sources */,
 				5B6487DE1DF4B47200E4156E /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				5B443C6E1DD2359F00690E41 /* SecondViewController.swift in Sources */,
+				5B39F5201E078274001CAE34 /* QuizViewController.swift in Sources */,
 				5B443C6A1DD2359F00690E41 /* AppDelegate.swift in Sources */,
 				5B443C6C1DD2359F00690E41 /* FirstViewController.swift in Sources */,
 			);

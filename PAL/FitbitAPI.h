@@ -16,9 +16,10 @@
 
 #pragma mark Instance Functions
 - (BOOL)authorizeFitbitAPI;
-- (void)getRequestToken:(id)sender;
+//- (void)getRequestToken:(id)sender;
 - (BOOL)testFun;
-- (AFOAuthCredential *)getCredential:(NSString*)token: forTokenType:(NSString *)token_type forExpiration:(NSString*)expiration;
-
+- (AFOAuthCredential *)getCredential: (NSString*)token forTokenType: (NSString *)token_type forExpiration: (NSString*)expiration;
+-(void)getFitbitUserProfile:(AFOAuthCredential*)credential;
+-(NSMutableString*)getFitbitSleepData:(AFOAuthCredential*)credential;
 
 @end

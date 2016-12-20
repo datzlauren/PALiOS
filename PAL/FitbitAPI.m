@@ -40,12 +40,12 @@ static FitbitAPI *sharedObject = nil;
      return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227Y9G&redirect_uri=PAL%3A%2F%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"]];
 
 }
--(BOOL) testFun {
+/*-(BOOL) testFun {
     [[[UIAlertView alloc] initWithTitle:@"It worked!" message: @"testFun!" delegate:nil cancelButtonTitle:@"Okay!" otherButtonTitles:nil] show];
     return true;
-}
+}*/
 
-- (AFOAuthCredential *)getCredential:(NSString*)token: forTokenType:(NSString *)token_type forExpiration:(NSString*)expiration
+- (AFOAuthCredential *)getCredential: (NSString*)token forTokenType: (NSString *)token_type forExpiration: (NSString*)expiration
 {
     
     AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:token tokenType: token_type];
@@ -84,7 +84,53 @@ static FitbitAPI *sharedObject = nil;
         [[[UIAlertView alloc] initWithTitle:@"It didn't work :(" message:[NSString stringWithFormat:@"Sad :( %@", error.userInfo] delegate:nil cancelButtonTitle:@"Okay!" otherButtonTitles:nil] show];
     }];*/
 }
-                                   
+
+-(void)getFitbitUserProfile:(AFOAuthCredential*)credential{
+    
+    NSURL *baseURL = [NSURL URLWithString:@"https://www.fitbit.com/oauth2/authorize"];
+    
+    AFHTTPSessionManager *manager =
+    [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithCredential:credential];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:@"https://api.fitbit.com/1/user/-/profile.json"
+      parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+          
+      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+          
+          NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+          NSDictionary *userDict  =[dictResponse valueForKey:@"user"];
+          NSLog(@"Success: %@", userDict);
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          NSLog(@"Failure: %@", error);
+      }];
+}
+-(NSMutableString*)getFitbitSleepData:(AFOAuthCredential*)credential {
+    NSMutableString *duration = [NSMutableString stringWithString:@""];
+    NSURL *baseURL = [NSURL URLWithString:@"https://www.fitbit.com/oauth2/authorize"];
+    
+    AFHTTPSessionManager *manager =
+    [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithCredential:credential];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:@"https://api.fitbit.com/1/user/-/sleep/date/today/duration.json"
+      parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+          
+      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+          
+          NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+          NSDictionary *userDict  =[dictResponse valueForKey:@"user"];
+          NSLog(@"Success: %@", userDict);
+          NSString *holder = [userDict valueForKey:@"duration"];
+          [duration setString: holder];
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          NSLog(@"Failure: %@", error);
+          //duration = [NSMutableString stringWithString:@""];;
+      }];
+    return duration;
+
+}
+
 #pragma mark NSURLConnection Delegate
 
 
