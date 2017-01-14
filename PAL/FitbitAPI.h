@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFOAuth2Manager.h"
+@import Firebase;
 
 @interface FitbitAPI : NSObject
 
@@ -17,9 +18,9 @@
 #pragma mark Instance Functions
 - (BOOL)authorizeFitbitAPI;
 //- (void)getRequestToken:(id)sender;
-- (BOOL)testFun;
+//- (BOOL)testFun;
 - (AFOAuthCredential *)getCredential: (NSString*)token forTokenType: (NSString *)token_type forExpiration: (NSString*)expiration;
 -(void)getFitbitUserProfile:(AFOAuthCredential*)credential;
--(NSMutableString*)getFitbitSleepData:(AFOAuthCredential*)credential;
+-(NSMutableString*)getFitbitSleepData:(AFOAuthCredential*)credential forFirebaseRef: (FIRDatabaseReference*)ref forUser: (NSString*) userID;
 
 @end

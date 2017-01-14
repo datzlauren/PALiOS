@@ -67,7 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: do this then call the profile function and see whats up
         let credential = FitbitAPI.sharedObject().getCredential(accessToken[1], forTokenType: tokenType, forExpiration: expiration);
         print (credential?.accessToken as Any);
-        UserDefaults.standard.setValue(accessToken[0], forKey:"auth-token");
+        UserDefaults.standard.setValue(accessToken[1], forKey:"auth-token");
+        UserDefaults.standard.setValue(tokenType, forKey:"token-type");
+        UserDefaults.standard.setValue(expiration, forKey:"expiration");
         //THIS is what's being called when we return from the internet redirect.
         //UIAlertView(title: "please??", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         
@@ -88,9 +90,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UserDefaults.standard.setValue(credential, forKey:"credential");
         //get and store sleep data
         //store 
-        let sleepData = FitbitAPI.sharedObject().getFitbitSleepData(credential);
-        
-        print (sleepData);
+        if let user =
+            FIRAuth.auth()?.currentUser{
+        let userID = user.uid
+        let sleepData = FitbitAPI.sharedObject().getFitbitSleepData(credential, forFirebaseRef: self.ref, forUser: userID);
+        let currentDate = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
+        let convertedDate = dateFormatter.string(from: currentDate as Date)
+       
+        //self.ref.child("users/\(userID)/sleep/\(convertedDate)").setValue(sleepData)
+        print (sleepData as Any);
+        }
 
         return true
     }
