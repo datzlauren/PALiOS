@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UIAlertView(title: "did finish please", message: "show up", delegate: nil, cancelButtonTitle: "Okay").show();
         FIRApp.configure()
         self.ref = FIRDatabase.database().reference()
+        
         return true
     }
     
@@ -94,10 +95,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FIRAuth.auth()?.currentUser{
         let userID = user.uid
         let sleepData = FitbitAPI.sharedObject().getFitbitSleepData(credential, forFirebaseRef: self.ref, forUser: userID);
-        let currentDate = NSDate()
+        let activityData = FitbitAPI.sharedObject().getFitbitActivityData(credential, forFirebaseRef: self.ref, forUser: userID);
+        /*let currentDate = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
-        let convertedDate = dateFormatter.string(from: currentDate as Date)
+        let convertedDate = dateFormatter.string(from: currentDate as Date)*/
        
         //self.ref.child("users/\(userID)/sleep/\(convertedDate)").setValue(sleepData)
         print (sleepData as Any);

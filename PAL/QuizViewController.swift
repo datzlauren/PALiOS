@@ -19,25 +19,30 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
         // Do any additional setup after loading the view.
+        let fitbitAPI = FitbitAPI.sharedObject()
+        fitbitAPI?.authorizeFitbitAPI()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     @IBOutlet weak var moodSlider: UISlider!
+    
     @IBOutlet weak var worrySlider: UISlider!
-    @IBOutlet weak var stressSlider: UISlider!
 
-    @IBAction func submitButton(_ sender: UIButton) {
+
+    @IBOutlet weak var stressSlider: UISlider!
+    
+
+    @IBAction func submitButton(_ sender: Any) {
+    
         if let user =
             FIRAuth.auth()?.currentUser{
             let moodLevel = moodSlider.value
             let worryLevel = worrySlider.value
             let stressLevel = stressSlider.value
-    
+            
             let currentDate = NSDate()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm:ss"
@@ -53,12 +58,12 @@ class QuizViewController: UIViewController {
             
             //move to confirmation page
             /*let alertController = UIAlertController(title: "Thanks!", message: "You have successfully submitted your quiz results; you may exit the app now.", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-            
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tab") as UIViewController
-            self.present(viewController, animated: false, completion: nil)*/
+             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+             alertController.addAction(defaultAction)
+             self.present(alertController, animated: true, completion: nil)
+             
+             let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tab") as UIViewController
+             self.present(viewController, animated: false, completion: nil)*/
             let alert = UIAlertController(title: "Thanks!", message: "You have successfully submitted your quiz results; you may exit the app now.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                 let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "tab")
@@ -73,9 +78,11 @@ class QuizViewController: UIViewController {
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
-
+            
         }
+
     }
+
     /*
     // MARK: - Navigation
 

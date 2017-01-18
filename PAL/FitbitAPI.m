@@ -151,6 +151,49 @@ static FitbitAPI *sharedObject = nil;
     
 
 }
+-(NSMutableString*)getFitbitActivityData:(AFOAuthCredential*)credential forFirebaseRef: (FIRDatabaseReference*)ref forUser: (NSString*) userID {
+    NSMutableString *duration = [[NSMutableString alloc] init];
+    NSURL *baseURL = [NSURL URLWithString:@"https://www.fitbit.com/oauth2/authorize"];
+    
+    AFHTTPSessionManager *manager =
+    [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithCredential:credential];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //NSLog(
+    NSString *currDate = [NSString stringWithFormat:@"https://api.fitbit.com/1/user/-/activities/date/%@.json",[dateFormatter stringFromDate:[NSDate date]]];
+    NSLog(@"%@", currDate);
+    //NSString *req = ;
+    [manager GET: currDate
+      parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+          
+      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+          
+          NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+          NSDictionary *userDict = [dictResponse valueForKey:@"summary"];
+          NSLog(@"Success: %@", userDict);
+          
+          
+          [dateFormatter setDateFormat:@"yyyy:MM:dd:HH:mm:ss"];
+          
+          [[[[[ref child:@"users"] child:userID] child: @"activity" ]child:[dateFormatter stringFromDate:[NSDate date]]] setValue:userDict];
+          
+          //ref.child("users/\(userID)/sleep/\(convertedDate)").setValue(userDict)
+          
+          //[duration appendString: [NSString stringWithFormat:@"%@", holder] ];
+          //NSLog(@"Duration: %@", duration);
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          NSLog(@"Failure: %@", error);
+          //duration = [NSMutableString stringWithString:@""];;
+          //[duration appendString: @""];
+      }];
+    
+    
+    return duration;
+    
+    
+}
 
 #pragma mark NSURLConnection Delegate
 

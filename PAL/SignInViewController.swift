@@ -26,8 +26,8 @@ class SignInViewController: UIViewController {
         if let user =
             FIRAuth.auth()?.currentUser {
             print ("hi")
-            let fitbitAPI = FitbitAPI.sharedObject()
-            fitbitAPI?.authorizeFitbitAPI()
+            /*let fitbitAPI = FitbitAPI.sharedObject()
+            fitbitAPI?.authorizeFitbitAPI()*/
             //let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "vc") as UIViewController
             //self.present(viewController, animated: false, completion: nil)
             self.signOutButton.alpha = 1.0
@@ -51,7 +51,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func createAccountAction(_ sender: Any) {
-        if self.emailTextField.text! == "" || self.passwordTextField.text == "" {
+        if emailTextField.text! == "" || passwordTextField.text! == "" {
             print("we're here")
             print(self.emailTextField.text)
             print(self.passwordTextField.text)
@@ -64,11 +64,11 @@ class SignInViewController: UIViewController {
                 if error == nil {
                     self.signOutButton.alpha = 1.0
                     self.userNameLabel.text = user!.email
-                    self.emailTextField.text = ""
-                    self.passwordTextField.text = ""
+                    //self.emailTextField.text = ""
+                    //self.passwordTextField.text = ""
                     //create user in DB
                     self.ref = FIRDatabase.database().reference()
-                    let templateChild = ["moods": "",
+                    let templateChild = ["mood": "",
                                          "stress": "",
                                          "worry": "",
                                          "sleep": ""]

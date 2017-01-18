@@ -22,5 +22,6 @@
 - (AFOAuthCredential *)getCredential: (NSString*)token forTokenType: (NSString *)token_type forExpiration: (NSString*)expiration;
 -(void)getFitbitUserProfile:(AFOAuthCredential*)credential;
 -(NSMutableString*)getFitbitSleepData:(AFOAuthCredential*)credential forFirebaseRef: (FIRDatabaseReference*)ref forUser: (NSString*) userID;
+-(NSMutableString*)getFitbitActivityData:(AFOAuthCredential*)credential forFirebaseRef: (FIRDatabaseReference*)ref forUser: (NSString*) userID;
 
 @end
