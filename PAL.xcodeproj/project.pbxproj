@@ -11,7 +11,6 @@
 		5511CEEC6001C992129B7DE1 /* Pods_PAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8F87A53D888A3B3986B2C5 /* Pods_PAL.framework */; };
 		5B39F5201E078274001CAE34 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F51F1E078274001CAE34 /* QuizViewController.swift */; };
 		5B443C6A1DD2359F00690E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443C691DD2359F00690E41 /* AppDelegate.swift */; };
-		5B443C6C1DD2359F00690E41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443C6B1DD2359F00690E41 /* FirstViewController.swift */; };
 		5B443C6E1DD2359F00690E41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443C6D1DD2359F00690E41 /* SecondViewController.swift */; };
 		5B443C711DD2359F00690E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B443C6F1DD2359F00690E41 /* Main.storyboard */; };
 		5B443C731DD2359F00690E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B443C721DD2359F00690E41 /* Assets.xcassets */; };
@@ -28,6 +27,7 @@
 		5B6487E01DF4B47200E4156E /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6487DD1DF4B47200E4156E /* AFOAuthCredential.m */; };
 		5BA5DE531DE8928700E86139 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA5DE351DE4A29E00E86139 /* OAuthSwift.framework */; };
 		5BA5DE541DE8928700E86139 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA5DE351DE4A29E00E86139 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5BD9E5A41E3D2E3C00621AA3 /* PALcolor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD9E5A31E3D2E3C00621AA3 /* PALcolor.png */; };
 		9A9592CCCE31E4C1A2167E64 /* Pods_PALUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5984F3BE9B008A58564772F1 /* Pods_PALUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,7 +132,6 @@
 		5B39F51F1E078274001CAE34 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		5B443C661DD2359F00690E41 /* PAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B443C691DD2359F00690E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B443C6B1DD2359F00690E41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		5B443C6D1DD2359F00690E41 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5B443C701DD2359F00690E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B443C721DD2359F00690E41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +155,7 @@
 		5B6487DC1DF4B47200E4156E /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuthCredential.h; sourceTree = "<group>"; };
 		5B6487DD1DF4B47200E4156E /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuthCredential.m; sourceTree = "<group>"; };
 		5BA5DE2A1DE4A29D00E86139 /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = ../../../Desktop/OAuthSwift/OAuthSwift.xcodeproj; sourceTree = "<group>"; };
+		5BD9E5A31E3D2E3C00621AA3 /* PALcolor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PALcolor.png; sourceTree = "<group>"; };
 		5F8F87A53D888A3B3986B2C5 /* Pods_PAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		806B9520E44B4F7791A64629 /* Pods-PAL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAL/Pods-PAL.debug.xcconfig"; sourceTree = "<group>"; };
 		A137E2B869E9F35001276A67 /* Pods-PALTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PALTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PALTests/Pods-PALTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,7 +231,6 @@
 				5B39F51F1E078274001CAE34 /* QuizViewController.swift */,
 				5B443C991DD237B900690E41 /* GoogleService-Info.plist */,
 				5B443C691DD2359F00690E41 /* AppDelegate.swift */,
-				5B443C6B1DD2359F00690E41 /* FirstViewController.swift */,
 				5BA5DE2A1DE4A29D00E86139 /* OAuthSwift.xcodeproj */,
 				5B443C6D1DD2359F00690E41 /* SecondViewController.swift */,
 				5B443C6F1DD2359F00690E41 /* Main.storyboard */,
@@ -268,6 +267,7 @@
 		5B6487E71DF4B47C00E4156E /* AFAuth2Manager */ = {
 			isa = PBXGroup;
 			children = (
+				5BD9E5A31E3D2E3C00621AA3 /* PALcolor.png */,
 				5B6487D81DF4B47200E4156E /* AFHTTPRequestSerializer+OAuth2.h */,
 				5B6487D91DF4B47200E4156E /* AFHTTPRequestSerializer+OAuth2.m */,
 				5B6487DA1DF4B47200E4156E /* AFOAuth2Manager.h */,
@@ -488,6 +488,7 @@
 				5B443C9A1DD237B900690E41 /* GoogleService-Info.plist in Resources */,
 				5B443C731DD2359F00690E41 /* Assets.xcassets in Resources */,
 				5B443C711DD2359F00690E41 /* Main.storyboard in Resources */,
+				5BD9E5A41E3D2E3C00621AA3 /* PALcolor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +661,6 @@
 				5B443C6E1DD2359F00690E41 /* SecondViewController.swift in Sources */,
 				5B39F5201E078274001CAE34 /* QuizViewController.swift in Sources */,
 				5B443C6A1DD2359F00690E41 /* AppDelegate.swift in Sources */,
-				5B443C6C1DD2359F00690E41 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,8 +19,7 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
         // Do any additional setup after loading the view.
-        let fitbitAPI = FitbitAPI.sharedObject()
-        fitbitAPI?.authorizeFitbitAPI()
+        
     }
 
     override func didReceiveMemoryWarning() {

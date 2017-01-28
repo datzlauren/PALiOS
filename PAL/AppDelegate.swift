@@ -8,11 +8,12 @@
 
 import UIKit
 import Firebase
-import OAuthSwift
+import UserNotifications
 
+@available(iOS 10.0, *)
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var ref: FIRDatabaseReference!
@@ -42,7 +43,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         self.ref = FIRDatabase.database().reference()
         
+        //ensure we are allowed to send notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {(accepted, error) in
+            if !accepted {
+                print("Notification access denied.")
+                print(error!)
+            } else {
+                let fitbitAPI = FitbitAPI.sharedObject()
+                fitbitAPI?.authorizeFitbitAPI()
+            }
+        }
+        
+        application.registerForRemoteNotifications()
+        resetNotifications()
+        
         return true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            completionHandler(UNNotificationPresentationOptions.alert)
+    }
+    
+    //SCHEDULING REGULAR NOTIFICATIONS
+    func resetNotifications () {
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10800, repeats: true)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Hey!"
+        content.body = "How are you feeling? Tell PAL!"
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "standard"
+        content.badge = 1;
+        let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                print("Uh oh! We had an error: \(error)")
+            }
+        }
     }
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {

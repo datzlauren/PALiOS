@@ -52,9 +52,6 @@ class SignInViewController: UIViewController {
     
     @IBAction func createAccountAction(_ sender: Any) {
         if emailTextField.text! == "" || passwordTextField.text! == "" {
-            print("we're here")
-            print(self.emailTextField.text)
-            print(self.passwordTextField.text)
             let alertController = UIAlertController(title: "Sorry!", message: "Please enter email and password", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
@@ -71,7 +68,8 @@ class SignInViewController: UIViewController {
                     let templateChild = ["mood": "",
                                          "stress": "",
                                          "worry": "",
-                                         "sleep": ""]
+                                         "sleep": "",
+                                         "activity": ""]
                     if user != nil {
                         self.ref.child("users").child(user!.uid).setValue(templateChild)
                     }
@@ -90,13 +88,6 @@ class SignInViewController: UIViewController {
     }
 
     @IBAction func signInAction(_ sender: Any) {
-        
-        if self.emailTextField.text! == "" || self.passwordTextField.text == "" {
-            let alertController = UIAlertController(title: "Sorry!", message: "Please enter email and password", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
                 if error == nil {
                     print ("sign in success")
@@ -104,8 +95,7 @@ class SignInViewController: UIViewController {
                     self.userNameLabel.text = user!.email
                     self.emailTextField.text = ""
                     self.passwordTextField.text = ""
-                    let fitbitAPI = FitbitAPI.sharedObject()
-                    fitbitAPI?.authorizeFitbitAPI()
+                    
                 } else {
                     let alertController = UIAlertController(title: "Sorry!", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -116,7 +106,7 @@ class SignInViewController: UIViewController {
             
         }
 
-    }
+    
     
     
     
